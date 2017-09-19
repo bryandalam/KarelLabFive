@@ -51,6 +51,7 @@ public class DoubleBot extends Robot
         }
         move();
     }
+    
 }
         
         

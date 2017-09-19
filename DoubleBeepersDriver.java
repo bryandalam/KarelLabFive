@@ -22,7 +22,7 @@ public class DoubleBeepersDriver implements Directions
         World.setBeeperColor(Color.black);
         World.setStreetColor(Color.gray);
         World.setNeutroniumColor(Color.black);
-        World.setDelay(5);  
+        World.setDelay(3);  
         World.setVisible(true);
     }
 }
