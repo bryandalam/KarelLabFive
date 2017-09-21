@@ -17,26 +17,21 @@ public class DemocracyBot extends Robot
     }
     }
     public void checkForBeeper() {
-        while (!nextToABeeper()) {
+        move();
+        if (nextToABeeper()) {
             move();
         }
-        if (nextToABeeper()) {
-            pickBeeper();
-            checkRoom();
-        }
+        checkRoom();
     }
     public void checkRoom() {
         faceNorth();
-        while (frontIsClear()) {
-            move();
-        }
+        move();
         while (nextToABeeper()) {
             pickBeeper();
         }
         faceSouth();
-        while(frontIsClear()) {
-            move();
-        }
+        move();
+        move();
         while (nextToABeeper()) {
             pickBeeper();
         }
