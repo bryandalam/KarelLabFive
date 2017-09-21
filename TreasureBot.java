@@ -10,41 +10,43 @@ public class TreasureBot extends Robot
     public TreasureBot(int st, int av, Direction dir, int numBeepers) {
         super(st, av, dir, numBeepers);
     }
-    public int beepers;
     
     public void findTreasure() {
-        findBeeper();
+        while (true) {
         followBeeper();
     }
+    }
     public void findBeeper(){
-        faceNorth();
         while (!nextToABeeper()) {
             move();
         }
     }
     public void followBeeper() {
+        int beeperNum = 0;
         while (nextToABeeper()) {
             pickBeeper();
-            beepers++;
-        }       
-        if (beepers == 1) {
-            goNorth();
+            beeperNum++;
         }
-        if (beepers == 2) {
-            goEast();
+        count(beeperNum);
+    }
+    public void count(int beeperNumber) {
+        if (beeperNumber == 1) {
+            moveNorth();
         }
-        if (beepers == 3) {
-            goSouth();
+        if (beeperNumber == 2) {
+            moveEast();
         }
-        if (beepers == 4) {
-            goWest();
+        if (beeperNumber == 3) {
+            moveSouth();
         }
-        if (beepers == 5) {
+        if (beeperNumber == 4) {
+            moveWest();
+        }
+        if (beeperNumber == 5) {
             turnOff();
         }
-        beepers = 0;
     }
-    public void goNorth() {
+    public void moveNorth() {
         while (!facingNorth()) {
             turnLeft();
         }
@@ -52,7 +54,7 @@ public class TreasureBot extends Robot
             move();
         }
     }
-    public void goEast() {
+    public void moveEast() {
         while (!facingEast()) {
             turnLeft();
         }
@@ -60,15 +62,15 @@ public class TreasureBot extends Robot
             move();
         }
     }
-    public void goSouth() {
+    public void moveSouth() {
         while (!facingSouth()) {
             turnLeft();
         }
         while (!nextToABeeper()) {
             move();
-            }
         }
-    public void goWest() {
+        }
+    public void moveWest() {
         while (!facingWest()) {
             turnLeft();
         }
